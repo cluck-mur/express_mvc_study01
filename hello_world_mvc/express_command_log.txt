@@ -1,0 +1,27 @@
+PS C:\work\express\express_mvc_study01> express --view=ejs hello_world_mvc  
+
+   create : hello_world_mvc\
+   create : hello_world_mvc\public\
+   create : hello_world_mvc\public\javascripts\
+   create : hello_world_mvc\public\images\
+   create : hello_world_mvc\public\stylesheets\
+   create : hello_world_mvc\public\stylesheets\style.css
+   create : hello_world_mvc\routes\
+   create : hello_world_mvc\routes\index.js
+   create : hello_world_mvc\routes\users.js
+   create : hello_world_mvc\views\
+   create : hello_world_mvc\views\error.ejs
+   create : hello_world_mvc\views\index.ejs
+   create : hello_world_mvc\app.js
+   create : hello_world_mvc\package.json
+   create : hello_world_mvc\bin\www
+
+   change directory:
+     > cd hello_world_mvc
+
+   install dependencies:
+     > npm install
+
+   run the app:
+     > SET DEBUG=hello-world-mvc:* & npm start
+
