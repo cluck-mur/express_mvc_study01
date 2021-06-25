@@ -1,7 +1,25 @@
 var dbModules = require('../models');
 
-var userController = {
-    showAllUsers: function (req, res, next) {
+/**
+ * Class
+ * コントローラ　User
+ */
+class UserController {
+    /**
+     * constructor
+     * コンストラクタ
+     */
+    constructor() {
+    }
+
+    /**
+     * showAllUsers
+     * 全ユーザデータを取得しレンダーへ表示指示する
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
+    showAllUsers(req, res, next) {
         // sequelizeのモデルを使ってデータをDBから取得する
         dbModules.User.findAll()
             .then((users) => {
@@ -17,11 +35,19 @@ var userController = {
             })
             .catch((e) => {
                 console.log(e);
-                res.send('Error');
-
+                // res.send('Error');
+                next();
             });
-    },
-    showUserById: function (req, res, next) {
+    }
+
+    /**
+     * showUserById
+     * 指定IDのユーザデータを取得しレンダーへ表示指示する
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
+    showUserById(req, res, next) {
         let userId = req.params.userId; // userId取得
         if (!userId) {
             console.log('userIdを取得できませんでした。');
@@ -40,11 +66,20 @@ var userController = {
                 })
                 .catch((e) => {
                     console.log(e);
-                    res.send('Error');
+                    // res.send('Error');
+                    next();
                 });
         }
-    },
-    sendJson: function (req, res, next) {
+    }
+
+    /**
+     * sendJson
+     * 全ユーザデータを取得しレスポンスにJSONを返す
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
+    sendJson(req, res, next) {
         // Sequelizeのモデルを使ってデータを取得する
         dbModules.User.findAll()
             .then((users) => {
@@ -54,8 +89,12 @@ var userController = {
                 } else {
                     res.json(users);  // レスポンスを返す
                 }
-            });
+            })
+            .catch((e) => {
+                console.log(e);
+                next();
+            })
     }
 }
 
-module.exports = userController;
+module.exports = UserController;
