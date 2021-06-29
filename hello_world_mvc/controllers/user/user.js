@@ -1,4 +1,4 @@
-var dbModules = require('../models');
+var dbModules = require('../../models');
 
 /**
  * Class
